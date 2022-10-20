@@ -90,7 +90,7 @@ const Table = (props) => {
     complaint: {
       header: ["Id", "Complaint By", "Title", "Description", "Actions"],
       title: "Complaints",
-      rows:[["Id", "Complaint By", "Title", "Description", "Actions"]]
+      rows:[["Id", "Complaint By", "Title", "Description", actions]]
     },
     appointment: { header: ["Name"], title: "Appointments",rows:[["Appoinment"]] },
   };
