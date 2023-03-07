@@ -69,37 +69,13 @@ const Table = (props) => {
         "Name",
         "Password",
         "Phone Number",
-        "Patient_Id"
       ],
-      rows:[
-        ["Patient1",
-          "0312032154",
-          "Doctor1",
-          "Male",
-          "12-9-2022",
-          "12:00",
-          actions],
-          ["Patient2",
-          "03125325467",
-          "Doctor2",
-          "Female",
-          "12-9-2022",
-          "9:00",
-          actions],
-          ["Patient3",
-          "0321551814",
-          "Doctor3",
-          "Male",
-          "12-9-2022",
-          "12:56",
-          actions]
-          ,["Patient4",
-          "032153158",
-          "Doctor4",
-          "Female",
-          "12-9-2022",
-          "01:25",
-          actions]],
+      keys:[
+        "Patient Email Address",
+       "Patient Name",
+        "Patient Password",
+        "Patient phone_no",
+      ],
         
       title: "Patient's Table",
     },
@@ -113,16 +89,15 @@ const Table = (props) => {
         "Specialization",
       ],
       title: "Doctor's Table",
-      rows:[
-        [
-          "Doctor1",
-          "Doctor1@gmail.com ",
-          "Male",
-          "L1123554",
-          "3-20-12",
-          "12:53",
-          actions,
-        ],
+      keys:[
+        
+          "Email Address",
+          "Full Name",
+           "License #",
+           "Password",
+           "Phone #",
+           "Specialization"
+        
       ]
     },
     medicine: {
@@ -135,7 +110,7 @@ const Table = (props) => {
         "Actions",
       ],
       title: "Medicine's Table",
-      rows:[
+      keys:[
         [
           "ID",
           "Medicine Name",
@@ -149,7 +124,7 @@ const Table = (props) => {
     complaint: {
       header: ["Id", "Complaint By", "Title", "Description", "Actions"],
       title: "Complaints",
-      rows:[["Id", "Complaint By", "Title", "Description", actions]]
+      keys:[["Id", "Complaint By", "Title", "Description", actions]]
     },
     appointment: { 
       header: [ 
@@ -162,11 +137,21 @@ const Table = (props) => {
     "Patient Phone Number",
     "Patient Name"],
      title: "Appointments",
-     rows:[] },
+     keys:[
+      "Appointed Doctor Id",
+      "Appointed Patient Id",
+      "Approved Appointment Date",
+      "Approved Appointment Time",
+      "Approved Doctor Cell",
+      "Approved Doctor Name",
+      "Approved Patient Cell",
+      "Approved Patient Name",
+
+     ] },
   };
 
   var th = values[current].header;
-  var tr = values[current].rows;
+  var keys = values[current].keys;
   var title = values[current].title;
 
     console.log(data);
@@ -177,7 +162,7 @@ const Table = (props) => {
     <>
     <br />
       <h3>{title}</h3><br />
-      <TableView th={th} tr={data}></TableView>
+      <TableView keys={keys} th={th} tr={data}></TableView>
     </>
   );
 };

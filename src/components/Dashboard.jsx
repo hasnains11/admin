@@ -46,31 +46,6 @@ const Dashboard = (props) => {
   var actions=<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" style={{ height:"1rem", fill:"rebeccapurple"}}><path d="M352 128c0 70.7-57.3 128-128 128s-128-57.3-128-128S153.3 0 224 0s128 57.3 128 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM472 200H616c13.3 0 24 10.7 24 24s-10.7 24-24 24H472c-13.3 0-24-10.7-24-24s10.7-24 24-24z" /></svg>;
 
 
-  var patients=[
-["Patient1",
-  "0312032154",
-  "Doctor1",
-  "Male",
-  "12:00",
-  actions],
-  ["Patient2",
-  "03125325467",
-  "Doctor2",
-  "Male",
-  "9:00",
-  actions],
-  ["Patient3",
-  "0321551814",
-  "Doctor3",
-  "Female",
-  "12:56",
-  actions]
-  ,["Patient4",
-  "032153158",
-  "Doctor4",
-  "Female",
-  "01:25",
-  actions]];
 
   useEffect(() => {
     async function fetchData() {
@@ -137,7 +112,7 @@ const Dashboard = (props) => {
       <div className="d-flex flex-row mb-3 mt-2">
 
         {doctors && doctors.map((e,index)=><Avatar
-          img={docImages[index]}
+          img={docImages[index]??docImages[0]}
           name={e['Full Name']}
           borderColor={"black"}
         />)}

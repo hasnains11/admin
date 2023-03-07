@@ -1,4 +1,4 @@
-const TableView = ({ th, tr }) => {
+const TableView = ({ th, tr ,keys}) => {
   return (
     <div style={{ overflowY: "scroll", height: "300px" }}>
       <table className="table">
@@ -17,9 +17,8 @@ const TableView = ({ th, tr }) => {
             tr.map((val) => (
               <tr>
                 {
-                  
-                   Object.keys(val).map((k,index) =>(
-                    index<Object.keys(val).length-1 &&<td> {val[k]}</td>
+                   keys.map((k,index) =>(
+                    <td> {val[k]}</td>
                 ))
                 // <td></td>
                 }
