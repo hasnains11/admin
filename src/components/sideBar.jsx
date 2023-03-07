@@ -1,9 +1,8 @@
-import {NavLink} from 'react-router-dom';
-
+import { NavLink } from "react-router-dom";
+import { signOut, getAuth } from "firebase/auth";
 const SideBar = () => {
   return (
     <>
-   
       <div
         className="d-flex flex-column justify-content-between p-0 bg-light"
         style={{ maxWidth: 280, height: "100%" }}
@@ -11,18 +10,22 @@ const SideBar = () => {
         <NavLink
           to="/"
           className="d-flex align-items-center mt-2 mb-3 mb-md-0 
-          me-md-auto link-dark text-decoration-none" >
+          me-md-auto link-dark text-decoration-none"
+        >
           <svg className="bi me-2" width="40" height="32">
             <use href="#bootstrap" />
           </svg>
-          <span className="fs-4"><b>Admin <span style={{color:"red"}}>Portal</span></b></span>
+          <span className="fs-4">
+            <b>
+              Admin <span style={{ color: "red" }}>Portal</span>
+            </b>
+          </span>
         </NavLink>
-        
+
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item">
-          <NavLink
-          to="/dashboard" className="nav-link link-dark" >
+            <NavLink to="/dashboard" className="nav-link link-dark">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -44,8 +47,7 @@ const SideBar = () => {
             </NavLink>
           </li>
           <li>
-          <NavLink
-          to="/table/appointment" className="nav-link link-dark">
+            <NavLink to="/table/appointment" className="nav-link link-dark">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -61,8 +63,7 @@ const SideBar = () => {
             </NavLink>
           </li>
           <li>
-          <NavLink
-          to="/table/doctor" className="nav-link link-dark">
+            <NavLink to="/table/doctor" className="nav-link link-dark">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -74,13 +75,10 @@ const SideBar = () => {
                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
               </svg>
               <span className="ms-2">Doctors Management</span>
-
             </NavLink>
-            
           </li>
           <li>
-          <NavLink
-          to="/table/patient" className="nav-link link-dark">
+            <NavLink to="/table/patient" className="nav-link link-dark">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -96,8 +94,7 @@ const SideBar = () => {
             </NavLink>
           </li>
           <li>
-          <NavLink
-          to="/table/medicine" className="nav-link link-dark">
+            <NavLink to="/table/medicine" className="nav-link link-dark">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -116,14 +113,32 @@ const SideBar = () => {
           </li>
         </ul>
 
-       <div className="mb-3" style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-        <hr />
-        <NavLink
-          to="/table/complaint" className="btn btn-light mb-2 border" href="/table/complaint">Customer Support</NavLink>
-        <button type="button" className="btn btn-danger ">Sign Out</button>
-
-       </div>
-        
+        <div
+          className="mb-3"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <hr />
+          <NavLink
+            to="/table/complaint"
+            className="btn btn-light mb-2 border"
+            href="/table/complaint"
+          >
+            Customer Support
+          </NavLink>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={() => {
+              setTimeout(async ()=> await signOut(getAuth()),1000);
+            }}
+          >
+            Sign Out
+          </button>
+        </div>
       </div>
     </>
   );

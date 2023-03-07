@@ -1,8 +1,13 @@
+import { useEffect, useState } from "react";
+import { getCollection, getCollectionCounts } from "../services.js/allServices";
 import Avatar from "./Avatars";
 import Card from "./Card";
 import Table from "./Table";
 import TableView from "./TableView";
-const Dashboard = () => {
+const Dashboard = (props) => {
+  // const [data, setdata] = useState(data);
+  const [counts, setcounts] = useState({patient:0,doctor:0,appointment:0});
+  const [doctors, setdoctors] = useState(null);
   var Icons = {
     doctors: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -67,32 +72,52 @@ const Dashboard = () => {
   "01:25",
   actions]];
 
+  useEffect(() => {
+    async function fetchData() {
+      const response = await getCollectionCounts();
+      const d = await response;
+      const doctors=await getCollection('Doctor');
+      const doc=await doctors;  
+      setdoctors(doc);
+      console.log(d);
+      setcounts(response);
+    }
+
+
+    
+     fetchData();  
+  
+  }, []);
+
+
 
   return (
     <>
       <h3>Overview</h3>
       <div className="d-flex flex-row mb-3 mt-2">
+
         <Card
           icon={Icons.doctors}
           heading="Total Doctors"
           iconColor="#acbefc"
-          value={152}
+          value={counts.doctor}
           headingColor="#879afb"
           bgColor="#edf1ff"
         ></Card>
+
         <Card
           icon={Icons.patient}
           heading="Total Patients"
           iconColor="#f7e9aa"
-          value={1145}
+          value={counts.patient}
           headingColor="#f2d76f"
           bgColor="#fefaec"
         ></Card>
         <Card
           icon={Icons.appointment}
-          heading="Total Patients"
+          heading="Appointments"
           iconColor="#bcecd5"
-          value={102}
+          value={counts.appointment}
           headingColor="#8adcb8"
           bgColor="#f0fbf6"
         ></Card>
@@ -108,40 +133,32 @@ const Dashboard = () => {
 
     <div className="d-flex flex-row-mb-2 justify-content-between">
       <h4>Doctors</h4>
-        <button className="btn btn-primary ps-2 pe-2">Add Doctor</button>
     </div>
       <div className="d-flex flex-row mb-3 mt-2">
-        <Avatar
-          img={docImages[0]}
-          name="Dr Strange"
+
+        {doctors && doctors.map((e,index)=><Avatar
+          img={docImages[index]}
+          name={e['Full Name']}
           borderColor={"black"}
-        />
-        <Avatar 
-        img={docImages[1]}
-        name="Dr Octopus" borderColor={"#cecece"} />
-        <Avatar
-        img={docImages[2]}
-        name="Dr Philips" borderColor={"#black"} />
-        <Avatar 
-        img={docImages[3]}
-        name="Dr John" borderColor={"#cecece"} />
+        />)}
+        
+        
       </div>
    
    
    
     <div className="d-flex flex-row-mb-2 justify-content-between mt-2">
       <h4>Recent Patients</h4>
-        <button className="btn btn-primary ps-2 pe-2">Add Patients</button>
     </div>
     <br />
 
-    <TableView th={["Patient Name",
+    <Table id="dashboard"></Table>
+    {/* <TableView th={["Patient Name",
         "Phone Number",
         "Doctor Name",
         "Gender",
         "Time",
-        "Actions"]} tr={patients}  ></TableView>
-    .btn
+        "Actions"]} tr={data}  ></TableView> */}
     </>
   );
 };
