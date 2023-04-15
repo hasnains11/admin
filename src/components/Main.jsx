@@ -4,6 +4,10 @@ import Dashboard from "./Dashboard";
 import SearchBar from "./SearchBar";
 import SideBar from "./sideBar";
 import Table from "./Table";
+import LabTest from './LabTest';
+import ViewTests from './ViewTests';
+import BloodBank from './BloodBank';
+import ViewDonations from './ViewDonations';
 
 const Main = () => {
 
@@ -20,16 +24,22 @@ const Main = () => {
               style={{ overflowY: "scroll", height: "100vh" }}
               className="example"
             >
-              <br />
-              <br />
-              <br />
-              <SearchBar />
-              <br />
+              {/* <SearchBar /> */}
               <br />
               <Switch>
+              
+                <Route path="/bloodbank" component={BloodBank} />
+                <Route path="/viewdonations" component={ViewDonations} />
+
+                <Route path="/labtest" component={LabTest} />
+                
+                <Route path="/viewtest" component={ViewTests} />
+                
+                
                 <Route path="/table/:id" component={Table} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/" component={Dashboard} />
+              
               </Switch>
             </div>
           </div>

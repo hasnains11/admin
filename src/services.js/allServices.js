@@ -1,7 +1,7 @@
 import firestore from "./firestore";
 
 import app from "./firebase";
-import {collection,getDocs,collectionGroup} from 'firebase/firestore';
+import {collection,getDocs,collectionGroup,setDoc,addDoc} from 'firebase/firestore';
 
 export async function getCollection(collectionName) {
   return await  getDocs(collection(firestore,collectionName)).then(
@@ -10,11 +10,27 @@ export async function getCollection(collectionName) {
         ...doc.data(),
         id: doc.id,
       }));
-      return newData;
+ 
       console.log(newData);
+      return newData;
     }
   );
 }
+
+
+
+// export default function setHotelsData(hotelsList){
+//     const res=hotelsList.map(async hotel=>{
+//       addDoc(collection(firestore,"hotels"),hotel);
+//     });
+//     console.log(res);
+
+// }
+
+
+
+
+
 
 export async function getCollectionCounts() {
   const d=await getCollection('Doctor');

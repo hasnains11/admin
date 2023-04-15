@@ -17,7 +17,7 @@ const TableView = ({ th, tr ,keys}) => {
             tr.map((val) => (
               <tr>
                 {
-                   keys.map((k,index) =>(
+                   keys.map((k) =>(
                     <td> {val[k]}</td>
                 ))
                 // <td></td>

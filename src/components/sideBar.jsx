@@ -111,6 +111,84 @@ const SideBar = () => {
               <span className="ms-2">Pharmacy Management</span>
             </NavLink>
           </li>
+          <li className="nav-item dropdown">
+            <NavLink
+              to="/blood"
+              className="nav-link link-dark dropdown-toggle"
+              id="bloodDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-heart"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 1.548c-3.905 0-7 3.144-7 7a5.466 5.466 0 0 0 1.857 4.097l4.143 3.764a.5.5 0 0 0 .636 0l4.143-3.764A5.466 5.466 0 0 0 15 8.548c0-3.856-3.095-7-7-7zm4.243 6.243a2.5 2.5 0 1 1-3.536 3.536L8 11.535l-1.707-1.707a2.5 2.5 0 1 1-3.536-3.536L4.465 7.465 8 10l3.535-3.535 1.708-1.707z"
+                />
+              </svg>
+              <span className="ms-2">Lab Test Management</span>
+            </NavLink>
+            <ul className="dropdown-menu" aria-labelledby="bloodDropdown">
+              <li>
+                <NavLink to="/labtest" className="dropdown-item">
+                  Book Test
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/viewtest" className="dropdown-item">
+                  View Test
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+         
+          <li className="nav-item dropdown">
+            <NavLink
+              to="/blood"
+              className="nav-link link-dark dropdown-toggle"
+              id="bloodDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-heart"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 1.548c-3.905 0-7 3.144-7 7a5.466 5.466 0 0 0 1.857 4.097l4.143 3.764a.5.5 0 0 0 .636 0l4.143-3.764A5.466 5.466 0 0 0 15 8.548c0-3.856-3.095-7-7-7zm4.243 6.243a2.5 2.5 0 1 1-3.536 3.536L8 11.535l-1.707-1.707a2.5 2.5 0 1 1-3.536-3.536L4.465 7.465 8 10l3.535-3.535 1.708-1.707z"
+                />
+              </svg>
+              <span className="ms-2">Blood Bank Management</span>
+            </NavLink>
+            <ul className="dropdown-menu" aria-labelledby="bloodDropdown">
+              <li>
+                <NavLink to="/bloodbank" className="dropdown-item">
+                  Book Blood Donation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/viewdonations" className="dropdown-item">
+                  View Donations
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+
+
+
         </ul>
 
         <div
@@ -133,7 +211,7 @@ const SideBar = () => {
             type="button"
             className="btn btn-danger"
             onClick={() => {
-              setTimeout(async ()=> await signOut(getAuth()),1000);
+              setTimeout(async () => await signOut(getAuth()), 1000);
             }}
           >
             Sign Out
