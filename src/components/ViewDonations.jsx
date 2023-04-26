@@ -6,12 +6,19 @@ const ViewDonations = () => {
 
     useEffect( () => {
         const fetchData=async()=>{
-         try{
-           const data= await getCollection('bloodbankdata');
-           setBloodBanks(data);
-          }catch(err){
+
+          try{
+
+            const data= await getCollection('bloodbank');
+            
+            
+            setBloodBanks(data);
+          
+        }
+        catch(err){
            console.log(err);
           }
+
          }
          fetchData();
          },[]);
@@ -34,8 +41,6 @@ const ViewDonations = () => {
           <th>Longitude</th>
           <th>Category</th>
           <th>Test Name</th>
-          <th>Donor</th>
-          <th>Acceptor</th>
           <th>Price</th>
         </tr>
       </thead>
@@ -51,8 +56,6 @@ const ViewDonations = () => {
               <td>{bloodBank.longitude}</td>
               <td>{bloodBank.category}</td>
               <td>{bloodBank.testName}</td>
-              <td>{bloodBank.donor}</td>
-              <td>{bloodBank.acceptor}</td>
               <td>{bloodBank.price}</td>
             </tr>
             ))}
