@@ -38,7 +38,6 @@ const ViewTests = () => {
           <tr>
             <th>Lab Name</th>
             <th>Category</th>
-            <th>Logo</th>
             <th>Latitude</th>
             <th>Longitude</th>
             <th>Test Name</th>
@@ -51,8 +50,7 @@ const ViewTests = () => {
             <tr key={index}>
               <td>{doc.labName}</td>
               <td>{doc.category}</td>
-              <td><img src={doc.logoUrl} alt={doc.labName}
-               style={{ maxHeight: '100px', maxWidth: '100px' }} /></td>
+             
               <td>{doc.latitude}</td>
               <td>{doc.longitude}</td>
               <td>{doc.testName}</td>

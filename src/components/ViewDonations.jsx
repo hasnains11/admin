@@ -37,7 +37,6 @@ const ViewDonations = () => {
       <table className="table  table-striped table-hover">
       <thead className="table-dark">
         <tr>
-          <th>Logo</th>
           <th>Blood Bank Name</th>
           <th>Timing</th>
           <th>Latitude</th>
@@ -51,9 +50,7 @@ const ViewDonations = () => {
       <tbody>
           {bloodBankData.map((bloodBank) => (
           <tr key={bloodBank.id}>
-              <td>
-                <img src={bloodBank.logoUrl} alt={bloodBank.bloodBankName} width="50" height="50" />
-              </td>
+              
               <td>{bloodBank.bloodBankName}</td>
               <td>{bloodBank.timing}</td>
               <td>{bloodBank.latitude}</td>
