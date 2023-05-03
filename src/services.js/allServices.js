@@ -1,7 +1,7 @@
 import firestore from "./firestore";
 
 import app from "./firebase";
-import {collection,getDocs,collectionGroup,setDoc,addDoc} from 'firebase/firestore';
+import {collection,getDocs,collectionGroup,setDoc,addDoc,doc,deleteDoc} from 'firebase/firestore';
 
 export async function getCollection(collectionName) {
   return await  getDocs(collection(firestore,collectionName)).then(
@@ -16,6 +16,17 @@ export async function getCollection(collectionName) {
     }
   );
 }
+
+export async function deleteRecord(collectionName, docId) {
+  try {
+    const docRef = await doc(collection(firestore, collectionName), docId);
+    await deleteDoc(docRef);
+    console.log("Document deleted successfully!");
+  } catch (error) {
+    console.error("Error deleting document: ", error);
+  }
+}
+
 
 
 

@@ -1,4 +1,6 @@
-const TableView = ({ th, tr ,keys}) => {
+import { deleteRecord } from "../services.js/allServices";
+
+const TableView = ({ th, tr ,keys,collectionName,handleRefresh}) => {
   return (
     <div style={{ overflowY: "scroll", height: "300px" }}>
       <table className="table">
@@ -21,7 +23,13 @@ const TableView = ({ th, tr ,keys}) => {
                     <td> {val[k]}</td>
                 ))
                 // <td></td>
-                }
+              }
+              <td><button className="btn btn-danger" 
+              onClick={async () => {
+                console.log("delete");
+                await deleteRecord(collectionName,val.id);
+                handleRefresh();
+              }}>Delete</button></td>
               </tr>
                           
             ))}

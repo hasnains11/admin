@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
-import { getCollection } from "../services.js/allServices";
+import { deleteRecord, getCollection } from "../services.js/allServices";
 
 const ViewDonations = () => {
     const [bloodBankData, setBloodBanks] = useState([]);
+   
+    const fetchData=async()=>{
+
+      try{
+
+        const data= await getCollection('bloodbank');
+        
+        
+        setBloodBanks(data);
+      
+    }
+    catch(err){
+       console.log(err);
+      }
+
+     }
+
 
     useEffect( () => {
-        const fetchData=async()=>{
-
-          try{
-
-            const data= await getCollection('bloodbank');
-            
-            
-            setBloodBanks(data);
-          
-        }
-        catch(err){
-           console.log(err);
-          }
-
-         }
+        
          fetchData();
          },[]);
 
@@ -42,6 +45,7 @@ const ViewDonations = () => {
           <th>Category</th>
           <th>Test Name</th>
           <th>Price</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -57,6 +61,12 @@ const ViewDonations = () => {
               <td>{bloodBank.category}</td>
               <td>{bloodBank.testName}</td>
               <td>{bloodBank.price}</td>
+              <td><button className="btn btn-danger" 
+              onClick={async () => {
+                console.log("delete");
+                await deleteRecord("bloodbank",bloodBank.id);
+                fetchData();
+              }}>Delete</button></td>
             </tr>
             ))}
             

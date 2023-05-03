@@ -1,5 +1,5 @@
 import { useEffect, useState,useMemo } from "react";
-import { getCollection } from "../services.js/allServices";
+import { deleteRecord, getCollection } from "../services.js/allServices";
 const ViewTests = () => {
   const [documents, setDocuments] = useState([]);
 
@@ -43,6 +43,7 @@ const ViewTests = () => {
             <th>Longitude</th>
             <th>Test Name</th>
             <th>Timing</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -56,6 +57,12 @@ const ViewTests = () => {
               <td>{doc.longitude}</td>
               <td>{doc.testName}</td>
               <td>{doc.timing}</td>
+              <td><button className="btn btn-danger" 
+              onClick={async () => {
+                console.log("delete");
+                await deleteRecord("LabTests",doc.id);
+                handleRefresh();
+              }}>Delete</button></td>
             </tr>
           )) : <tr><td colSpan="7">No data found</td></tr>}
         </tbody>

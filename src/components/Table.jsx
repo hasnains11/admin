@@ -43,16 +43,16 @@ const Table = (props) => {
 
 
 
+  async function fetchData() {
+    const response = await getCollection(collection);
+    // const d = await response;
+    setdata(response);
+  }
 
   
   useEffect(() => {
     // const run=async()=>await getCollection(collection);
 
-    async function fetchData() {
-      const response = await getCollection(collection);
-      // const d = await response;
-      setdata(response);
-    }
     fetchData();
     
     // const d=run();
@@ -75,6 +75,7 @@ const Table = (props) => {
        "Patient Name",
         "Patient Password",
         "Patient phone_no",
+    
       ],
         
       title: "Patient's Table",
@@ -162,7 +163,7 @@ const Table = (props) => {
     <>
     <br />
       <h3>{title}</h3><br />
-      <TableView keys={keys} th={th} tr={data}></TableView>
+      <TableView keys={keys} th={th} tr={data} collectionName={collection} handleRefresh={fetchData}></TableView>
     </>
   );
 };
