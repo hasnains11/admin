@@ -30,7 +30,13 @@ const Table = (props) => {
       collection='Approved Appointments';
       break;
     case 'medicine':
-      collection=""
+      collection="Medicine"
+      break;
+    case 'complaint':
+      collection="Customer Support"
+      break;
+    case 'transactions':
+      collection="Transaction"
       break;
   
     default:
@@ -103,30 +109,35 @@ const Table = (props) => {
     },
     medicine: {
       header: [
-        "ID",
         "Medicine Name",
         "Price",
         "Description",
         "Quantity",
-        "Actions",
+        "Milligram",
       ],
       title: "Medicine's Table",
       keys:[
-        [
-          "ID",
-          "Medicine Name",
+        
+          "Title",
           "Price",
           "Description",
           "Quantity",
-          actions,
-        ]
+          "Milligram",
+        
       ]
     },
     complaint: {
-      header: ["Id", "Complaint By", "Title", "Description", "Actions"],
-      title: "Complaints",
-      keys:[["Id", "Complaint By", "Title", "Description", actions]]
+      header: ["Id", "Complaint By", "Phone#", "Description", "Email"],
+      title: "Customer Support",
+      keys:["Id", "Name", "Phone", "Message", "Email"]
     },
+    transactions: {
+      header: ["Id", "Item", "Price", "Seller", "Time"],
+      title: "Transactions",
+      keys:["id", "item", "price", "seller", "time"]
+    },
+
+
     appointment: { 
       header: [ 
         "Doctor ID",

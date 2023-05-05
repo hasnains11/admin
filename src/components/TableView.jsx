@@ -1,7 +1,9 @@
 import { deleteRecord } from "../services.js/allServices";
 
 const TableView = ({ th, tr ,keys,collectionName,handleRefresh}) => {
+  console.log(tr)
   return (
+
     <div style={{ overflowY: "scroll", height: "300px" }}>
       <table className="table">
         <thead className="table-dark">
@@ -24,12 +26,12 @@ const TableView = ({ th, tr ,keys,collectionName,handleRefresh}) => {
                 ))
                 // <td></td>
               }
-              <td><button className="btn btn-danger" 
+              {/* <td><button className="btn btn-danger" 
               onClick={async () => {
                 console.log("delete");
                 await deleteRecord(collectionName,val.id);
                 handleRefresh();
-              }}>Delete</button></td>
+              }}>Delete</button></td> */}
               </tr>
                           
             ))}

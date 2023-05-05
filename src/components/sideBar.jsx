@@ -94,6 +94,15 @@ const SideBar = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/table/transactions" className="nav-link link-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M12 1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm-4 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm.5-3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+</svg>
+
+              <span className="ms-2">Transactions</span>
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/table/medicine" className="nav-link link-dark">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -207,6 +216,7 @@ const SideBar = () => {
           >
             Customer Support
           </NavLink>
+         
           <button
             type="button"
             className="btn btn-danger"
