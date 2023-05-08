@@ -59,11 +59,7 @@ const Table = (props) => {
 
       setdata(filteredData);
      
-    }else if(current=='transactions'){
-       const billingAdress= await getCollection("Billing Address");
-        var updatedTransactionData={...response,address:billingAdress['address'],city:billingAdresss['city']};
-        setdata(updatedTransactionData);
-      }  
+    }
        else{
       setdata(response);
     }
