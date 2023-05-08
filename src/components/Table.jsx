@@ -20,7 +20,7 @@ const Table = (props) => {
   var collection;
   switch (current) {
     case 'doctor':
-      collection='Doctor';
+      collection='Professions';
       break;
     case 'patient':
       collection='Patient';
@@ -51,8 +51,23 @@ const Table = (props) => {
 
   async function fetchData() {
     const response = await getCollection(collection);
+    console.log("----------------------------------------------");
+    if (current=='doctor') {
+
+      const filteredData = response.filter(item => item['Profession'] === 'Doctor');
+      console.log("filtered"+filteredData);
+
+      setdata(filteredData);
+     
+    }else if(current=='transactions'){
+       const billingAdress= await getCollection("Billing Address");
+        var updatedTransactionData={...response,address:billingAdress['address'],city:billingAdresss['city']};
+        setdata(updatedTransactionData);
+      }  
+       else{
+      setdata(response);
+    }
     // const d = await response;
-    setdata(response);
   }
 
   
@@ -93,7 +108,7 @@ const Table = (props) => {
         "License Number",
         "Password",
         "Phone Number",
-        "Specialization",
+        "Gender",
       ],
       title: "Doctor's Table",
       keys:[
@@ -103,7 +118,7 @@ const Table = (props) => {
            "License #",
            "Password",
            "Phone #",
-           "Specialization"
+           "Gender"
         
       ]
     },
@@ -132,9 +147,9 @@ const Table = (props) => {
       keys:["Id", "Name", "Phone", "Message", "Email"]
     },
     transactions: {
-      header: ["Id", "Item", "Price", "Seller", "Time"],
+      header: ["Id", "Item", "Price", "Seller","Address","City","Time"],
       title: "Transactions",
-      keys:["id", "item", "price", "seller", "time"]
+      keys:["id", "item", "price", "seller","address","city", "time"]
     },
 
 
@@ -165,6 +180,9 @@ const Table = (props) => {
   var th = values[current].header;
   var keys = values[current].keys;
   var title = values[current].title;
+
+
+  
 
     console.log(data);
     // data.map((row)=>Object.keys(row).map((k)=>console.log(row[k])));

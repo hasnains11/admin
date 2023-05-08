@@ -1,6 +1,9 @@
 import { deleteRecord } from "../services.js/allServices";
 
 const TableView = ({ th, tr ,keys,collectionName,handleRefresh}) => {
+
+  
+
   console.log(tr)
   return (
 
