@@ -26,12 +26,14 @@ const TableView = ({ th, tr ,keys,collectionName,handleRefresh}) => {
                 ))
                 // <td></td>
               }
-              {/* <td><button className="btn btn-danger" 
+             
+             {
+              <td><button className="btn btn-danger" 
               onClick={async () => {
                 console.log("delete");
                 await deleteRecord(collectionName,val.id);
                 handleRefresh();
-              }}>Delete</button></td> */}
+              }}>Delete</button></td> } 
               </tr>
                           
             ))}
