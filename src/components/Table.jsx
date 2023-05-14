@@ -38,6 +38,9 @@ const Table = (props) => {
     case 'transactions':
       collection="Transaction"
       break;
+    case 'medequipment':
+      collection="Medical_Equipment"
+      break;
   
     default:
       collection='Patient'
@@ -100,7 +103,8 @@ const Table = (props) => {
     doctor: {
       header: [
         "Doctor Email",
-        "Address",
+        "Name",
+        "Profession",
         "License Number",
         "Password",
         "Phone Number",
@@ -108,10 +112,11 @@ const Table = (props) => {
       ],
       title: "Doctor's Table",
       keys:[
-        
+
           "Email Address",
           "Full Name",
-           "License #",
+          "Doctor_profession",
+          "License #",
            "Password",
            "Phone #",
            "Gender"
@@ -137,6 +142,22 @@ const Table = (props) => {
         
       ]
     },
+    medequipment: {
+      header: [
+        "Title",
+        "Description",
+        "Price",
+        "Quantity",
+      ],
+      title: "Medicine Equipment's Table",
+      keys:[
+        "Title",
+        "Description",
+        "Price",
+        "Quantity",
+        
+      ]
+    },
     complaint: {
       header: ["Id", "Complaint By", "Phone#", "Description", "Email"],
       title: "Customer Support",
@@ -159,16 +180,18 @@ const Table = (props) => {
     "Doctor's Name",
     "Patient Phone Number",
     "Patient Name"],
+
      title: "Appointments",
+
      keys:[
-      "Appointed Doctor Id",
-      "Appointed Patient Id",
-      "Approved Appointment Date",
-      "Approved Appointment Time",
-      "Approved Doctor Cell",
-      "Approved Doctor Name",
-      "Approved Patient Cell",
-      "Approved Patient Name",
+      "AppointedDoctorId",
+      "AppointedPatientId",
+      "ApprovedAppointmentDate",
+      "ApprovedAppointmentTime",
+      "ApprovedDoctorCell",
+      "ApprovedDoctorName",
+      "ApprovedPatientCell",
+      "ApprovedPatientName",
 
      ] },
   };

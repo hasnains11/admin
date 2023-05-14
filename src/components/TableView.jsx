@@ -7,7 +7,7 @@ const TableView = ({ th, tr ,keys,collectionName,handleRefresh}) => {
   console.log(tr)
   return (
 
-    <div style={{ overflowY: "scroll", height: "300px" }}>
+    <div style={{ overflowY: "scroll", height: "700px" }}>
       <table className="table">
         <thead className="table-dark">
           <tr>

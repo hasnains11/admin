@@ -44,11 +44,16 @@ export async function deleteRecord(collectionName, docId) {
 
 
 export async function getCollectionCounts() {
-  const d=await getCollection('Doctor');
+  const response = await getCollection('Professions');
+    const d = response.filter(item => item['Profession'] === 'Doctor');
+
+
     const p=await getCollection('Patient');
+    const m=await getCollection('Medicine');
     const a=await getCollection('Approved Appointments');
     console.log(a);
     return {
+      medicine:m.length,
       doctor:d.length,
       patient:p.length,
       appointment:a.length

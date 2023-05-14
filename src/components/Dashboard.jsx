@@ -3,10 +3,11 @@ import { getCollection, getCollectionCounts } from "../services.js/allServices";
 import Avatar from "./Avatars";
 import Card from "./Card";
 import Table from "./Table";
+import { NavLink } from "react-router-dom";
 import TableView from "./TableView";
 const Dashboard = (props) => {
   // const [data, setdata] = useState(data);
-  const [counts, setcounts] = useState({patient:0,doctor:0,appointment:0});
+  const [counts, setcounts] = useState({patient:0,doctor:0,appointment:0,medicine:0});
   const [doctors, setdoctors] = useState(null);
   var Icons = {
     doctors: (
@@ -35,12 +36,6 @@ const Dashboard = (props) => {
     ),
   };
 
-  var docImages = [
-    "https://media.istockphoto.com/photos/portrait-of-a-doctor-picture-id92347287?k=20&m=92347287&s=612x612&w=0&h=_vPaOKo3wrZd8FG_Y9WR6yAa4OYXf8OXGRZ6X2qk6aM=",
-    "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
-    "https://previews.123rf.com/images/olegdudko/olegdudko1906/olegdudko190605430/124874948-handsome-doctor-portrait-on-background.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdyZ0jEAqCUBMJHbx7Y3bnjlAAG1_07mbqtWvJhRN3Ug&s",
-  ];
 
 
   var actions=<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" style={{ height:"1rem", fill:"rebeccapurple"}}><path d="M352 128c0 70.7-57.3 128-128 128s-128-57.3-128-128S153.3 0 224 0s128 57.3 128 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM472 200H616c13.3 0 24 10.7 24 24s-10.7 24-24 24H472c-13.3 0-24-10.7-24-24s10.7-24 24-24z" /></svg>;
@@ -49,12 +44,20 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     async function fetchData() {
+
       const response = await getCollectionCounts();
+
       const d = await response;
-      const doctors=await getCollection('Doctor');
-      const doc=await doctors;  
+
+      const doctors=await getCollection('Professions');
+
+      const doc=await doctors;    
+
+
       setdoctors(doc);
+
       console.log(d);
+
       setcounts(response);
     }
 
@@ -64,6 +67,13 @@ const Dashboard = (props) => {
   
   }, []);
 
+  const th = [ "Doctor Email",
+  "Name",
+  "Profession",
+  "License Number",
+  "Password",
+  "Phone Number",
+  "Gender",];
 
 
   return (
@@ -100,31 +110,55 @@ const Dashboard = (props) => {
           icon={Icons.medicine}
           heading="Medicines"
           iconColor="#ea90cf"
-          value={15000}
+          value={counts.medicine}
           headingColor="#ea90cf"
           bgColor="#fcf0f9"
         ></Card>
       </div>
 
-    <div className="d-flex flex-row-mb-2 justify-content-between">
-      <h4>Doctors</h4>
+    <div className="d-flex flex-column mt-2" >
+      
+    <NavLink to="/table/doctor" className="nav-link link-dark"><h4>Doctors</h4></NavLink>
+
+      <div style={{ overflowY: 'scroll', height: '500px' }}>
+      <table className="table">
+        <thead className="table-dark">
+          <tr>
+            {th.map((val, index) => (
+              <th key={index} scope="col">
+                {val}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {doctors !=null && doctors.filter(item => item['Profession'] === 'Doctor').map((doctor, index) => (
+            <tr key={index}>
+
+              <td>{doctor['Email Address']}</td>
+              <td>{doctor['Full Name']}</td>
+              <td>{doctor['Doctor_profession']}</td>
+              <td>{doctor['License #']}</td>
+              <td>{doctor['Password']}</td>
+              <td>{doctor['Gender']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
     </div>
       <div className="d-flex flex-row mb-3 mt-2">
 
-        {doctors && doctors.map((e,index)=><Avatar
+        {/* {doctors && doctors.map((e,index)=><Avatar
           img={docImages[index]??docImages[0]}
           name={e['Full Name']}
-          borderColor={"black"}
-        />)}
+          borderColor={"black"} */}
+        {/* />)} */}
         
         
       </div>
    
-   
-   
-    <div className="d-flex flex-row-mb-2 justify-content-between mt-2">
-      <h4>Recent Patients</h4>
-    </div>
     <br />
 
     <Table id="dashboard"></Table>

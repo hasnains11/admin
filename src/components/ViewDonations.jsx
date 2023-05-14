@@ -28,11 +28,15 @@ const ViewDonations = () => {
 
     return (
         <>
-        {bloodBankData.length==0? (
-          <tr>
-            <td colSpan="10">Loading...</td>
-          </tr>
-        ) : (
+        {
+        
+        // bloodBankData.length==0? (
+        //   <tr>
+        //     <td colSpan="10">Loading...</td>
+        //   </tr>
+        // ) : 
+        
+        (
         <><h2 className="text-center my-4">View Donations</h2>
       <table className="table  table-striped table-hover">
       <thead className="table-dark">
