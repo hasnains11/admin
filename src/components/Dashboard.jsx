@@ -67,7 +67,8 @@ const Dashboard = (props) => {
   
   }, []);
 
-  const th = [ "Doctor Email",
+  const th = [ 
+    "Doctor Email",
   "Name",
   "Profession",
   "License Number",
@@ -118,7 +119,7 @@ const Dashboard = (props) => {
 
     <div className="d-flex flex-column mt-2" >
       
-    <NavLink to="/table/doctor" className="nav-link link-dark"><h4>Doctors</h4></NavLink>
+    <NavLink to="/table/doctor" className="nav-link link-dark "><h4>Doctors</h4></NavLink>
 
       <div style={{ overflowY: 'scroll', height: '500px' }}>
       <table className="table">
@@ -140,6 +141,7 @@ const Dashboard = (props) => {
               <td>{doctor['Doctor_profession']}</td>
               <td>{doctor['License #']}</td>
               <td>{doctor['Password']}</td>
+              <td>{doctor['Profession']}</td>
               <td>{doctor['Gender']}</td>
             </tr>
           ))}
