@@ -8,7 +8,7 @@ const ViewDonations = () => {
 
       try{
 
-        const data= await getCollection('bloodbank');
+        const data= await getCollection('bloodbankdata');
         
         
         setBloodBanks(data);
@@ -37,7 +37,7 @@ const ViewDonations = () => {
         // ) : 
         
         (
-        <><h2 className="text-center my-4">View Donations</h2>
+        <><h2 className="text-center my-4">View Blood Bank Data</h2>
       <table className="table  table-striped table-hover">
       <thead className="table-dark">
         <tr>
@@ -54,7 +54,6 @@ const ViewDonations = () => {
       <tbody>
           {bloodBankData.map((bloodBank) => (
           <tr key={bloodBank.id}>
-              
               <td>{bloodBank.bloodBankName}</td>
               <td>{bloodBank.timing}</td>
               <td>{bloodBank.latitude}</td>
@@ -65,7 +64,7 @@ const ViewDonations = () => {
               <td><button className="btn btn-danger" 
               onClick={async () => {
                 console.log("delete");
-                await deleteRecord("bloodbank",bloodBank.id);
+                await deleteRecord("bloodbankdata",bloodBank.id);
                 fetchData();
               }}>Delete</button></td>
             </tr>

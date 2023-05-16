@@ -141,7 +141,7 @@ const Dashboard = (props) => {
               <td>{doctor['Doctor_profession']}</td>
               <td>{doctor['License #']}</td>
               <td>{doctor['Password']}</td>
-              <td>{doctor['Profession']}</td>
+              <td>{doctor['Phone #']}</td>
               <td>{doctor['Gender']}</td>
             </tr>
           ))}

@@ -13,8 +13,8 @@ const LabTest = () => {
     timing: "",
     latitude: "",
     longitude: "",
-    category: "",
-    testName: "",
+    // category: "",
+    // testName: "",
     description: "",
     donor: "",
     acceptor: "",
@@ -80,8 +80,8 @@ const LabTest = () => {
               timing: formValues.timing,
               latitude: formValues.latitude,
               longitude: formValues.longitude,
-              category: formValues.category,
-              testName: formValues.testName,
+              // category: formValues.category,
+              // testName: formValues.testName,
               description: formValues.description,
             };
             const docid = await uploadObject("bloodbank", bloodBank);
@@ -163,12 +163,12 @@ const LabTest = () => {
     ) {
       errors.longitude = "Please enter a valid longitude(-180 to 180)";
     }
-    if (!values.category || values.category === "true") {
-      errors.category = "Category is required";
-    }
-    if (!values.testName) {
-      errors.testName = "Test name is required";
-    }
+    // if (!values.category || values.category === "true") {
+      // errors.category = "Category is required";
+    // }
+    // if (!values.testName) {
+      // errors.testName = "Test name is required";
+    // }
     if (!values.price) {
       errors.price = "Price is required";
     }
@@ -316,7 +316,7 @@ const LabTest = () => {
               </div>
             )}
 
-            <div className="form-group mt-1">
+            {/* <div className="form-group mt-1">
               <label htmlFor="category">Category</label>
               <select
                 name="category"
@@ -330,8 +330,8 @@ const LabTest = () => {
                 <option value="heart">Heart</option>
                 <option value="kidney">Kidney</option>
               </select>
-            </div>
-            <div className="form-group mt-1">
+            </div> */}
+            {/* <div className="form-group mt-1">
               <label htmlFor="test-name">Blood Bank Name</label>
               <input
                 type="text"
@@ -342,12 +342,12 @@ const LabTest = () => {
                 placeholder="Enter test name"
                 required
               />
-            </div>
-            {formErrors.testName && (
+            </div> */}
+            {/* {formErrors.testName && (
               <div className="alert alert-danger py-0 my-2 " role="alert">
                 <small>{formErrors.testName}</small>
               </div>
-            )}
+            )} */}
             <div className="form-group mt-4">
               <div className="form-group mt-1">
                 <label htmlFor="description">Description</label>
