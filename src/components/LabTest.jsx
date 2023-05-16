@@ -8,6 +8,7 @@ const LabTest = () => {
   const [formValues, setFormValues] = useState({
     labName: '',
     timing: '',
+    endtime:'',
     latitude: '',
     longitude: '',
     category: '',
@@ -78,6 +79,9 @@ const LabTest = () => {
     }
     if (!values.timing) {
       errors.timing = 'Timing is required';
+    }
+    if (!values.endtime) {
+      errors.endtime = 'Closing Timing is required';
     }
 
     if (!values.latitude) {
@@ -178,6 +182,15 @@ const LabTest = () => {
           <input type="time" className="form-control" id="timing" 
           name="timing"
           // value={formValues.timing}
+          onChange={handleChange}
+          
+          required />
+        </div>
+        <div className="form-group mt-1">
+          <label htmlFor="endtime">Closing Timing</label>
+          <input type="time"  className="form-control" id="endtime" 
+          name="endtime"
+          // value={formValues.endtime}
           onChange={handleChange}
           
           required />
