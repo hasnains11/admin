@@ -85,16 +85,14 @@ const Table = (props) => {
   var values = {
     patient: {
       header: [
-        "Patient Email",
         "Name",
-        "Password",
         "Phone Number",
+        "Patient Email",
       ],
       keys:[
-        "Patient Email Address",
-       "Patient Name",
-        "Patient Password",
+        "Patient Name",
         "Patient phone_no",
+        "Patient Email Address",
     
       ],
         
@@ -102,24 +100,20 @@ const Table = (props) => {
     },
     doctor: {
       header: [
-        "Doctor Email",
         "Name",
-        "Profession",
-        "License Number",
-        "Password",
-        "Phone Number",
         "Gender",
+        "Doctor Email",
+        "Phone Number",
+        "License Number",
       ],
       title: "Doctor's Table",
       keys:[
 
-          "Email Address",
-          "Full Name",
-          "Doctor_profession",
+        "Full Name",
+        "Gender",
+        "Email Address",
+        "Phone #",
           "License #",
-           "Password",
-           "Phone #",
-           "Gender"
         
       ]
     },
@@ -164,34 +158,31 @@ const Table = (props) => {
       keys:["Id", "Name", "Phone", "Message", "Email"]
     },
     transactions: {
-      header: ["Id", "Item", "Price", "Seller","Address","City","Time"],
+      header: ["Id", "Item", "Price", "Seller","Time"],
       title: "Transactions",
-      keys:["id", "item", "price", "seller","address","city", "time"]
+      keys:["id", "item", "price", "seller", "time"]
     },
 
 
     appointment: { 
       header: [ 
-        "Doctor ID",
-    "Patient ID",
+        "Doctor's Name",
+        "Doctor Cell Number",
+        "Patient Name",
+        "Patient Phone Number",
     "Appointment Date",
     "Appointment Time",
-    "Doctor Cell Number",
-    "Doctor's Name",
-    "Patient Phone Number",
-    "Patient Name"],
+    ],
 
      title: "Appointments",
 
      keys:[
-      "AppointedDoctorId",
-      "AppointedPatientId",
+       "ApprovedDoctorName",
+       "ApprovedDoctorCell",
+       "ApprovedPatientName",
+       "ApprovedPatientCell",
       "ApprovedAppointmentDate",
       "ApprovedAppointmentTime",
-      "ApprovedDoctorCell",
-      "ApprovedDoctorName",
-      "ApprovedPatientCell",
-      "ApprovedPatientName",
 
      ] },
   };

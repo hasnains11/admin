@@ -72,7 +72,6 @@ const Dashboard = (props) => {
   "Name",
   "Profession",
   "License Number",
-  "Password",
   "Phone Number",
   "Gender",];
 
@@ -89,6 +88,7 @@ const Dashboard = (props) => {
           value={counts.doctor}
           headingColor="#879afb"
           bgColor="#edf1ff"
+          route="/table/doctor"
         ></Card>
 
         <Card
@@ -98,6 +98,7 @@ const Dashboard = (props) => {
           value={counts.patient}
           headingColor="#f2d76f"
           bgColor="#fefaec"
+          route="/table/patient"
         ></Card>
         <Card
           icon={Icons.appointment}
@@ -106,6 +107,7 @@ const Dashboard = (props) => {
           value={counts.appointment}
           headingColor="#8adcb8"
           bgColor="#f0fbf6"
+          route="/table/appointment"
         ></Card>
         <Card
           icon={Icons.medicine}
@@ -114,6 +116,7 @@ const Dashboard = (props) => {
           value={counts.medicine}
           headingColor="#ea90cf"
           bgColor="#fcf0f9"
+          route="/table/medicine"
         ></Card>
       </div>
 
@@ -140,7 +143,6 @@ const Dashboard = (props) => {
               <td>{doctor['Full Name']}</td>
               <td>{doctor['Doctor_profession']}</td>
               <td>{doctor['License #']}</td>
-              <td>{doctor['Password']}</td>
               <td>{doctor['Phone #']}</td>
               <td>{doctor['Gender']}</td>
             </tr>

@@ -8,7 +8,7 @@ const ViewDonations = () => {
 
       try{
 
-        const data= await getCollection('bloodbankdata');
+        const data= await getCollection('bloodata');
         
         
         setBloodBanks(data);
@@ -42,11 +42,9 @@ const ViewDonations = () => {
       <thead className="table-dark">
         <tr>
           <th>Blood Bank Name</th>
-          <th>Timing</th>
-          <th>Latitude</th>
-          <th>Longitude</th>
-          <th>Category</th>
-          <th>Test Name</th>
+          <th>Acceptor</th>
+          <th>Donor</th>
+          <th>Quantity</th>
           <th>Price</th>
           <th>Delete</th>
         </tr>
@@ -54,17 +52,15 @@ const ViewDonations = () => {
       <tbody>
           {bloodBankData.map((bloodBank) => (
           <tr key={bloodBank.id}>
-              <td>{bloodBank.bloodBankName}</td>
-              <td>{bloodBank.timing}</td>
-              <td>{bloodBank.latitude}</td>
-              <td>{bloodBank.longitude}</td>
-              <td>{bloodBank.category}</td>
-              <td>{bloodBank.testName}</td>
+              <td>{bloodBank.name}</td>
+              <td>{bloodBank.acceptor}</td>
+              <td>{bloodBank.donor}</td>
+              <td>{bloodBank.quantity}</td>
               <td>{bloodBank.price}</td>
               <td><button className="btn btn-danger" 
               onClick={async () => {
                 console.log("delete");
-                await deleteRecord("bloodbankdata",bloodBank.id);
+                await deleteRecord("bloodata",bloodBank.id);
                 fetchData();
               }}>Delete</button></td>
             </tr>

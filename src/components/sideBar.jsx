@@ -102,35 +102,37 @@ const SideBar = () => {
               <span className="ms-2">Transactions</span>
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/table/medicine" className="nav-link link-dark">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-capsule"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"
-                />
-              </svg>
-              <span className="ms-2">Pharmacy Management</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/table/medequipment" className="nav-link link-dark text-dark">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-medical-fill" viewBox="0 0 16 16">
+      
+          <li className="nav-item dropdown">
+            <NavLink
+              to="/blood"
+              className="nav-link link-dark dropdown-toggle"
+              id="pharmacyDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-medical-fill" viewBox="0 0 16 16">
   <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 4.5v.634l.549-.317a.5.5 0 1 1 .5.866L9 6l.549.317a.5.5 0 1 1-.5.866L8.5 6.866V7.5a.5.5 0 0 1-1 0v-.634l-.549.317a.5.5 0 1 1-.5-.866L7 6l-.549-.317a.5.5 0 0 1 .5-.866l.549.317V4.5a.5.5 0 1 1 1 0zM5.5 9h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zm0 2h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z"/>
 </svg>
-
-
-
-              <span className="ms-2">Medical Equipment</span>
+              <span className="ms-2">Pharmacy Management</span>
             </NavLink>
+
+            <ul className="dropdown-menu" aria-labelledby="pharmacyDropdown">
+              <li>
+                <NavLink to="/table/medicine" className="dropdown-item">
+                  Medicines
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/table/medequipment" className="dropdown-item">
+                  Medical Equipment
+                </NavLink>
+              </li>
+            </ul>
           </li>
+         
+         
           <li className="nav-item dropdown">
             <NavLink
               to="/blood"
@@ -155,6 +157,7 @@ const SideBar = () => {
               </svg>
               <span className="ms-2">Lab Test Management</span>
             </NavLink>
+
             <ul className="dropdown-menu" aria-labelledby="bloodDropdown">
               <li>
                 <NavLink to="/labtest" className="dropdown-item">

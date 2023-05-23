@@ -27,7 +27,10 @@ const firebaseConfig = {
 };
 
 // const app = initializeApp(firebaseConfig);
-
+// email at the end 
+// customer patient ki id ura do password b done
+// make cards clickable done
+// bloodata connection done
 const auth = getAuth(app);
 
 // const firestore = getFirestore(app);
@@ -38,13 +41,16 @@ console.log(app.status);
 console.log(app.name); //
 
 //  var auth=firebase.auth();
-const adminEmail = "wasiqfayaz07@gmail.com";
+const adminEmail = "wasiqfayaz7@gmail.com";
 
 const signInUser = async (email, password) => {
   if(email== adminEmail){
+    console.log("adminlogin");
   var currentUser = await signInWithEmailAndPassword(auth, email, password);
+  console.log(currentUser);
   return true;
   }
+  console.log("adminlogin");
   return false;
   
 };
